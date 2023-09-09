@@ -1,4 +1,19 @@
+server:
+  port: ${PORT:${SERVER_PORT:0}}
+
+idRandom: ${random.value}
 spring:
+  zipkin:
+      base-url: http://localhost:9411/
+      enabled: true
+  application:
+    name: serie-service
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/teffidev/microservicios-configs/tree/main
+        enabled: false
   mongodb:
     embedded:
       version: 4.0.2
@@ -6,8 +21,7 @@ spring:
     mongodb:
       database: test
       port: 27017
-server:
-  port: 0
+
 
 eureka:
   client:
@@ -19,6 +33,8 @@ eureka:
     service-url:
       default-zone: http://localhost:8761/eureka
   instance:
+    hostname: localhost
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
     prefer-ip-address: true
     lease-renewal-interval-in-seconds: 5
     lease-expiration-duration-in-seconds: 10
