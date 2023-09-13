@@ -1,5 +1,6 @@
 server:
   port: 0
+  context-path: /catalog/
 
 spring:
   zipkin:
@@ -14,6 +15,19 @@ spring:
     mongodb:
       database: test
       port: 27019
+  rabbitmq:
+    username: guest
+    password: guest
+    host: localhost
+    port: 5672
+
+queue:
+  serie:
+    name: Serie-Service-Queue
+  movie:
+    name: Movie-Service-Queue
+
+message: catalog-service up
 
 eureka:
   client:
