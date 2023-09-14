@@ -58,7 +58,7 @@ management:
 resilience4j:
   circuitbreaker:
     instances:
-      series:
+      catalog-circuit:
         slidingWindowType: COUNT_BASED
         slidingWindowSize: 5
         failureRateThreshold: 50
@@ -69,7 +69,7 @@ resilience4j:
         automaticTransitionFromOpenToHalfOpenEnabled: true
 retry:
   instances:
-    series:
+    catalog-circuit:
     waitDuration: 1000
     maxAttempts : 3
     retryExceptions:
